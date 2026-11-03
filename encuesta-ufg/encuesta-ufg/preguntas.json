@@ -1,0 +1,222 @@
+[
+ {
+  "seccion": "Sobre ti",
+  "texto": "¿En qué rango de edad te encuentras?",
+  "ayuda": "",
+  "opciones": [
+   "17-18 años",
+   "19-20 años",
+   "21-22 años",
+   "23-25 años"
+  ]
+ },
+ {
+  "seccion": "Sobre ti",
+  "texto": "¿De dónde viene el dinero que usas normalmente?",
+  "ayuda": "",
+  "opciones": [
+   "Mis padres o familia",
+   "Un trabajo mío (tiempo completo o medio tiempo)",
+   "Una beca o ayuda de estudio",
+   "Un negocio o ventas propias"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿Alguna vez te enseñaron en el colegio a manejar tu dinero (ahorrar, planear gastos)?",
+  "ayuda": "A esto se le llama educación financiera: aprender a usar bien el dinero.",
+  "opciones": [
+   "Sí, en una materia o curso",
+   "Solo en alguna charla",
+   "No, nunca",
+   "No recuerdo"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿Qué significa ahorrar?",
+  "ayuda": "Responde con lo que creas. Si no lo sabes, elige «No sé».",
+  "opciones": [
+   "Guardar una parte de mi dinero para usarlo después",
+   "Gastar todo el dinero que tengo",
+   "Pedir dinero prestado",
+   "No sé"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "De estas cosas: cuenta de ahorro, tarjeta de débito, tarjeta de crédito, préstamo y seguro, ¿cuántas conoces?",
+  "ayuda": "Se llaman productos financieros: servicios que ofrecen los bancos.",
+  "opciones": [
+   "Las conozco todas",
+   "Conozco algunas",
+   "Solo he oído hablar de ellas",
+   "No conozco ninguna"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿Haces un presupuesto para organizar tu dinero?",
+  "ayuda": "Un presupuesto es decidir cuánto dinero tienes y en qué lo vas a gastar.",
+  "opciones": [
+   "Sí, lo anoto (cuaderno, app o Excel)",
+   "Lo hago solo en mi cabeza",
+   "No, nunca",
+   "No sé qué es un presupuesto"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿Cuánto dinero gastas en promedio al día entre la universidad y tus gastos personales?",
+  "ayuda": "Cuenta transporte, comida, saldo, salidas y compras.",
+  "opciones": [
+   "Menos de $2",
+   "De $2 a $5",
+   "De $5 a $10",
+   "Más de $10"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿En qué categoría gastas la mayor parte de tu dinero durante la semana?",
+  "ayuda": "Piensa en una semana normal y elige la que más pese.",
+  "opciones": [
+   "Gastos de la universidad (transporte, comida, impresiones)",
+   "Gastos personales y de ocio (salidas, café, entretenimiento)",
+   "Compras por antojo (ropa, accesorios, snacks)",
+   "Servicios digitales (saldo, datos móviles, juegos)"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿Qué tan seguido se te acaba el dinero antes de tiempo?",
+  "ayuda": "Por ejemplo, antes de que termine la semana o el mes.",
+  "opciones": [
+   "Nunca",
+   "A veces",
+   "Casi siempre",
+   "Siempre"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "En tu casa, ¿se habla o se enseña sobre cómo manejar el dinero?",
+  "ayuda": "Por ejemplo, si te explican cómo ahorrar o cuánto cuestan las cosas.",
+  "opciones": [
+   "Sí, frecuentemente",
+   "A veces",
+   "Casi nunca",
+   "Nunca"
+  ]
+ },
+ {
+  "seccion": "Tus finanzas",
+  "texto": "¿Has pedido dinero a apps de préstamos rápidos, prestamistas o has comprado fiado?",
+  "ayuda": "Las apps de préstamos dan dinero al instante, pero cobran intereses altos.",
+  "opciones": [
+   "Nunca",
+   "Una o dos veces",
+   "Con frecuencia",
+   "No sé qué son"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Con qué frecuencia compras cosas por antojo, sin haberlo planeado?",
+  "ayuda": "Ejemplos: ropa, accesorios, snacks, café o salidas no planeadas.",
+  "opciones": [
+   "Casi a diario",
+   "2 o 3 veces por semana",
+   "Casi nunca",
+   "Nunca"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Qué es lo que más te lleva a gastar más de lo que tenías pensado?",
+  "ayuda": "",
+  "opciones": [
+   "Ofertas, descuentos o publicidad en redes",
+   "Estrés o querer premiarme",
+   "Amigos o compañeros",
+   "Nada, me controlo"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "Antes de comprar algo, ¿piensas si dura mucho o si daña el ambiente?",
+  "ayuda": "Por ejemplo, elegir algo que dure más o que use menos plástico.",
+  "opciones": [
+   "Siempre",
+   "A veces",
+   "Casi nunca",
+   "Nunca"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Separas la basura para reciclar (plástico, papel, vidrio)?",
+  "ayuda": "",
+  "opciones": [
+   "Siempre",
+   "A veces",
+   "Casi nunca",
+   "Nunca"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Con qué frecuencia usas cosas desechables (botellas, bolsas, platos)?",
+  "ayuda": "Desechable es lo que se usa una vez y se tira.",
+  "opciones": [
+   "Casi a diario",
+   "Algunas veces por semana",
+   "Casi nunca",
+   "Uso solo reutilizables"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Con qué frecuencia botas comida que compraste o cocinaste?",
+  "ayuda": "",
+  "opciones": [
+   "Casi a diario",
+   "Algunas veces por semana",
+   "Rara vez",
+   "Nunca"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Dónde compras sobre todo tus alimentos y cosas de uso diario?",
+  "ayuda": "Las tiendas locales son las de barrio, mercados y negocios cercanos.",
+  "opciones": [
+   "Mercados o tiendas de mi comunidad",
+   "Supermercados grandes",
+   "Por internet",
+   "Un poco de todos"
+  ]
+ },
+ {
+  "seccion": "Tus hábitos de consumo",
+  "texto": "¿Cómo llegas normalmente a la universidad?",
+  "ayuda": "",
+  "opciones": [
+   "Caminando o en bicicleta",
+   "En bus o transporte público",
+   "En carro o moto propios o de la familia",
+   "En taxi, Uber o moto de aplicación"
+  ]
+ },
+ {
+  "seccion": "Tu opinión",
+  "texto": "¿Qué estrategia aplicas, o podrías aplicar, para no quedarte sin dinero antes de que termine la semana?",
+  "ayuda": "",
+  "opciones": [
+   "Hacer un presupuesto semanal",
+   "Apartar primero una parte para ahorrar",
+   "Anotar todo lo que gasto",
+   "Reducir salidas y compras por antojo"
+  ]
+ }
+]

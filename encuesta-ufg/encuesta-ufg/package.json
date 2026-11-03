@@ -1,0 +1,16 @@
+{
+  "name": "encuesta-ufg",
+  "version": "1.0.0",
+  "description": "Encuesta de educación financiera y consumo sostenible (UFG)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "better-sqlite3": "^13.0.3",
+    "chart.js": "^4.6.1",
+    "express": "^5.3.0"
+  }
+}

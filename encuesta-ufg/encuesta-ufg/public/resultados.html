@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resultados · Encuesta UFG</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDF2EE;--card:#fff;--ink:#12261D;--mute:#5B6B62;--line:#D3DDD6;--pri:#0F4D36;--onpri:#fff;color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#0E1A14;--card:#16271E;--ink:#E8F0EA;--mute:#9DB0A4;--line:#2A4034;--pri:#59C998;--onpri:#08140E;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.5 Figtree,system-ui,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:24px 18px 60px}
+h1{font:800 clamp(1.8rem,5vw,2.6rem)/1.1 "Bricolage Grotesque",Georgia,serif;margin:0}
+h2{font:600 1.2rem/1.25 "Bricolage Grotesque",Georgia,serif;margin:6px 0 14px}
+.bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:22px}
+.total{display:inline-block;background:var(--pri);color:var(--onpri);border-radius:14px;padding:8px 18px;font-weight:600}
+.total b{font-size:1.6rem;margin-right:6px}
+button,input{font:inherit}
+.btn{font-weight:600;border:2px solid var(--line);background:var(--card);color:var(--ink);border-radius:12px;padding:10px 18px;cursor:pointer}
+.btn.pri{background:var(--pri);color:var(--onpri);border-color:var(--pri)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px}
+.sec{color:var(--mute);font-size:.88rem;font-weight:600}
+.cv{position:relative;height:190px}
+ul{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:6px}
+li{display:flex;gap:10px;align-items:flex-start;font-size:.95rem}
+li i{flex:none;width:12px;height:12px;border-radius:3px;margin-top:6px}
+li span{flex:1}li em{font-style:normal;font-weight:600;white-space:nowrap}
+.login{max-width:360px;margin:12vh auto;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px}
+.login input{width:100%;padding:12px;border:2px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);margin:14px 0}
+.err{color:#C0392B;min-height:1.4em;margin:0 0 8px}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script src="/chart.umd.js"></script>
+<script>
+var COL=["#0F4D36","#F0B429","#3AA6B9","#E07A5F"],app=document.getElementById("app"),charts=[];
+function clave(){try{return sessionStorage.getItem("clave")||""}catch(e){return ""}}
+function login(msg){
+  app.innerHTML='<form class="login" id="f"><h1 style="font-size:1.8rem">Resultados</h1><p class="sec">Ingresa la clave del equipo investigador.</p><input type="password" id="k" placeholder="Clave" autofocus><p class="err">'+(msg||"")+'</p><button class="btn pri" style="width:100%">Entrar</button></form>';
+  document.getElementById("f").onsubmit=function(e){e.preventDefault();try{sessionStorage.setItem("clave",document.getElementById("k").value)}catch(x){}cargar()};
+}
+function cargar(){
+  fetch("/api/resultados",{headers:{"x-clave":clave()}}).then(function(r){if(r.status===401){login("Clave incorrecta.");return null}return r.json()}).then(function(d){if(d)pintar(d)}).catch(function(){login("No se pudo conectar con el servidor.")});
+}
+function pintar(d){
+  charts.forEach(function(c){c.destroy()});charts=[];
+  var h='<div class="bar"><div><h1>Resultados de la encuesta</h1><p class="sec" style="margin:6px 0 0">Tu dinero, tus hábitos · UFG</p></div><div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><span class="total"><b>'+d.total+'</b>'+(d.total===1?'respuesta':'respuestas')+'</span><button class="btn" id="ac">Actualizar</button><button class="btn pri" id="csv">Descargar CSV</button></div></div>';
+  if(!d.total)h+='<div class="card"><p>Aún no hay respuestas. Comparte el enlace de la encuesta para empezar.</p></div>';
+  h+='<div class="grid">';
+  d.preguntas.forEach(function(p){
+    var t=p.opciones.reduce(function(a,o){return a+o.cuenta},0);
+    h+='<div class="card"><div class="sec">'+p.seccion+' · Pregunta '+p.n+'</div><h2>'+p.texto+'</h2><div class="cv"><canvas id="c'+p.n+'"></canvas></div><ul>';
+    p.opciones.forEach(function(o,k){h+='<li><i style="background:'+COL[k]+'"></i><span>'+o.texto+'</span><em>'+o.cuenta+' · '+(t?Math.round(o.cuenta/t*100):0)+'%</em></li>'});
+    h+='</ul></div>';
+  });
+  app.innerHTML=h+'</div>';
+  d.preguntas.forEach(function(p){
+    charts.push(new Chart(document.getElementById("c"+p.n),{type:"doughnut",data:{labels:p.opciones.map(function(o){return o.texto}),datasets:[{data:p.opciones.map(function(o){return o.cuenta}),backgroundColor:COL,borderWidth:2,borderColor:getComputedStyle(document.body).getPropertyValue("--card")}]},options:{maintainAspectRatio:false,plugins:{legend:{display:false}}}}));
+  });
+  document.getElementById("ac").onclick=cargar;
+  document.getElementById("csv").onclick=function(){
+    fetch("/api/exportar.csv",{headers:{"x-clave":clave()}}).then(function(r){return r.blob()}).then(function(b){var a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="respuestas_encuesta_ufg.csv";a.click()});
+  };
+}
+clave()?cargar():login();
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tu dinero, tus hábitos · Encuesta UFG</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=Figtree:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EDF2EE;--card:#fff;--ink:#12261D;--mute:#5B6B62;--line:#D3DDD6;--pri:#0F4D36;--onpri:#fff;--coin:#F0B429;--coinline:#B9831A;--tint:#E3F0E8;color-scheme:light;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0E1A14;--card:#16271E;--ink:#E8F0EA;--mute:#9DB0A4;--line:#2A4034;--pri:#59C998;--onpri:#08140E;--coinline:#8A6414;--tint:#1B3427;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0E1A14;--card:#16271E;--ink:#E8F0EA;--mute:#9DB0A4;--line:#2A4034;--pri:#59C998;--onpri:#08140E;--coinline:#8A6414;--tint:#1B3427;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 Figtree,system-ui,sans-serif;min-height:100vh}
+main{max-width:640px;margin:0 auto;padding:18px 18px 56px}
+h1,h2{font-family:"Bricolage Grotesque",Georgia,serif;line-height:1.08;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,9vw,3.5rem);font-weight:800;margin:6px 0 16px}
+h2{font-size:clamp(1.45rem,5.4vw,1.95rem);font-weight:600;margin:14px 0 10px}
+.top{display:flex;justify-content:space-between;align-items:center;color:var(--mute);font-size:.92rem;font-weight:600}
+.coins{display:flex;gap:4px;margin:14px 0 22px}
+.coins i{flex:1;height:10px;border-radius:5px;background:var(--line);transition:background .3s}
+.coins i.on{background:var(--coin)}
+.coins i.new{animation:pop .4s ease-out}
+@keyframes pop{50%{transform:scaleY(2.2)}}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--line);border-radius:99px;padding:5px 14px 5px 10px;font-size:.92rem;font-weight:600}
+.chip b{width:10px;height:10px;border-radius:50%;display:block}
+.hint{color:var(--mute);font-size:1rem;margin:0 0 4px}
+.opts{display:grid;gap:10px;margin-top:20px}
+.opt{display:flex;align-items:center;gap:14px;font:inherit;text-align:left;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:14px;padding:15px 16px;cursor:pointer;min-height:58px;transition:border-color .15s,background .15s,transform .1s}
+.opt:hover{border-color:var(--pri)}
+.opt:active{transform:scale(.985)}
+.rd{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:all .15s}
+.opt.sel{border-color:var(--pri);background:var(--tint);font-weight:600}
+.opt.sel .rd{background:var(--pri);border-color:var(--pri)}
+.opt.sel .rd::after{content:"";width:6px;height:11px;border:solid var(--onpri);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.enter{animation:in .28s ease-out}
+@keyframes in{from{opacity:0;transform:translateX(18px)}}
+.btn{font:inherit;font-weight:600;border:0;border-radius:14px;padding:16px 28px;cursor:pointer;background:var(--pri);color:var(--onpri);font-size:1.05rem}
+.btn.ghost{background:transparent;color:var(--mute);padding:10px 0;font-size:1rem}
+.nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px;color:var(--mute);font-size:.92rem}
+.hero{margin:8px 0 6px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:20px 0 22px}
+.facts div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center;font-size:.92rem;color:var(--mute);line-height:1.25}
+.facts strong{display:block;font:800 1.5rem "Bricolage Grotesque",Georgia,serif;color:var(--ink)}
+.hp{position:relative;overflow:hidden;background:#0F4D36;color:#fff;border-radius:24px;padding:26px 22px 150px;margin-top:6px}
+.hp h1{color:#fff;margin:14px 0 12px}
+.hp .lb{margin:0;color:#BFE3D0;font-weight:600;font-size:.95rem}
+.hp .sub{margin:0;color:#DCEFE4;font-size:1.05rem}
+.hp svg{position:absolute;right:14px;bottom:12px;width:min(230px,62%)}
+.lead{font-size:1.1rem;margin:24px 2px 0}
+.go{width:100%}
+.team{color:var(--mute);font-size:.92rem;margin-top:30px}
+.cn{animation:drop .5s cubic-bezier(.3,1.4,.5,1) both}
+@keyframes drop{from{opacity:0;transform:translateY(-60px)}}
+.center{text-align:center}
+.center svg{max-width:300px;width:100%;margin:10px auto 0}
+:focus-visible{outline:3px solid var(--coin);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<main id="app"></main>
+<script>
+var Q=[];
+var SC={"Sobre ti":"#F0B429","Tus finanzas":"#2E9D6F","Tus hábitos de consumo":"#3AA6B9","Tu opinión":"#E07A5F"};
+var A=[],i=-1,busy=false,app=document.getElementById("app");
+function stack(hs,anim){var o="",d=0,w=hs.length*46;
+hs.forEach(function(h,c){for(var r=0;r<h;r++){var x=c*46+23,y=96-r*13;
+o+='<g class="'+(anim?"cn":"")+'" style="animation-delay:'+(d+=.12)+'s"><ellipse cx="'+x+'" cy="'+(y+7)+'" rx="20" ry="8" fill="#B9831A"/><rect x="'+(x-20)+'" y="'+y+'" width="40" height="7" fill="#F0B429"/><ellipse cx="'+x+'" cy="'+y+'" rx="20" ry="8" fill="#F7CD5E" stroke="#B9831A" stroke-width="1.5"/></g>'}});
+return '<svg viewBox="0 0 '+w+' 116" role="img" aria-label="Monedas apiladas">'+o+"</svg>"}
+function coins(n){var s='<div class="coins">';for(var k=0;k<Q.length;k++)s+='<i class="'+(A[k]!=null?"on":"")+(k===n?" new":"")+'"></i>';return s+"</div>"}
+function intro(){app.innerHTML='<section class="hp"><p class="lb">Universidad Francisco Gavidia</p><h1>Tu dinero,<br>tus hábitos</h1><p class="sub">Encuesta para estudiantes de primer año</p>'+stack([1,2,3,4,5],false)+'</section>'+
+'<p class="lead">Queremos conocer cómo manejas tu dinero y tus compras del día a día, para que la UFG pueda ofrecerte talleres que sí te sirvan.</p>'+
+'<div class="facts"><div><strong>20</strong>preguntas</div><div><strong>4</strong>minutos</div><div><strong>100%</strong>anónima</div></div>'+
+'<button class="btn go" id="go">Comenzar encuesta</button>'+
+'<p class="team">Una investigación de Betza Rodríguez, Claudia Hernández, Jessica Guardado y Josué Barrientos.</p>';
+document.getElementById("go").onclick=function(){i=0;show(true)}}
+function show(anim){if(i<0)return intro();if(i>=Q.length)return end();
+var q=Q[i],h='<div class="top"><span>Pregunta '+(i+1)+' de '+Q.length+'</span><span>'+Math.round(i/Q.length*100)+'%</span></div>'+coins(anim?-1:i)+
+'<div class="'+(anim?"enter":"")+'"><span class="chip"><b style="background:'+SC[q[0]]+'"></b>'+q[0]+'</span><h2>'+q[1]+'</h2>'+(q[4]?'<p class="hint">'+q[4]+'</p>':'')+'<div class="opts">';
+q[2].forEach(function(o,k){h+='<button class="opt'+(A[i]===k?" sel":"")+'" data-k="'+k+'"><span class="rd"></span><span>'+o+'</span></button>'});
+h+='</div></div><div class="nav"><button class="btn ghost" id="bk">← Volver</button><span>'+(A[i]!=null?"":"Toca una opción para continuar")+"</span></div>";
+app.innerHTML=h;if(anim)window.scrollTo(0,0);
+app.querySelectorAll(".opt").forEach(function(b){b.onclick=function(){pick(+b.dataset.k)}});
+document.getElementById("bk").onclick=function(){if(!busy){i--;show(true)}}}
+function pick(k){if(busy)return;busy=true;A[i]=k;show();setTimeout(function(){i++;busy=false;show(true)},320)}
+document.addEventListener("keydown",function(e){if(i>=0&&i<Q.length){var k=+e.key-1;if(k>=0&&k<Q[i][2].length)pick(k)}});
+function gracias(){app.innerHTML='<div class="center"><div class="top" style="justify-content:center"><span>Universidad Francisco Gavidia</span></div>'+stack([4,4,4,4,4],true)+'<h1 style="margin-top:22px">¡Gracias por participar!</h1><p>Tus respuestas ya forman parte de la investigación.</p></div>'}
+function end(){app.innerHTML='<div class="center"><h1>Enviando…</h1></div>';enviar()}
+function enviar(){fetch("/api/respuestas",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({respuestas:A})}).then(function(r){if(!r.ok)throw 0;gracias()}).catch(function(){app.innerHTML='<div class="center"><h1>No se pudo enviar</h1><p>Revisa tu conexión e inténtalo de nuevo.</p><button class="btn" id="re">Reintentar</button></div>';document.getElementById("re").onclick=end})}
+fetch("/api/preguntas").then(function(r){return r.json()}).then(function(d){Q=d.map(function(p){return [p.seccion,p.texto,p.opciones,null,p.ayuda]});show()}).catch(function(){app.innerHTML="<h1>No se pudo cargar la encuesta</h1>"});
+</script>
+</body>
+</html>
